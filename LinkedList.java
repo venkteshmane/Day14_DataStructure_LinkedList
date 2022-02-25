@@ -1,6 +1,7 @@
 package Linkedlist;
 import java.util.Scanner;
 
+/*created the linked list*/
 class Node {
 	int data;
 	Node next;
@@ -20,17 +21,12 @@ class operations {
 	Node head;
 	Node tail;
 
+	/* method to push the data inside the list */
 	public Node pushData(int data) {
-		// created the object of the Node class to get the address of the Node and
-		// passing the "data" it will store in constructor
 		Node newnode = new Node(data);
 		if (head == null) {
 			head = newnode;
-			tail = newnode;
 		} else {
-			/*
-			 * swapping the value to get the new node address
-			 */
 			Node temp = head;
 			this.head = newnode;
 			newnode.next = temp;
@@ -41,9 +37,7 @@ class operations {
 	public void print() {
 		if (head == null)
 			System.out.println("Empty LinkList");
-
 		else {
-
 			Node temp = head;
 			while (temp != null) {
 				System.out.print(temp.data + " -> ");
@@ -52,6 +46,7 @@ class operations {
 		}
 	}
 
+	/* created method to append and pop the element present inside the list */
 	public void append(int data) {
 		Node newnode = new Node(data);
 		if (head == null) {
@@ -67,6 +62,10 @@ class operations {
 		Node tempNode = previousNode.next;
 		previousNode.next = newNode;
 		newNode.next = tempNode;
+	}
+
+	public void pop() {
+		this.head = this.head.next;
 	}
 }
 
@@ -87,7 +86,7 @@ class LinkList {
 		link.print();
 	}
 
-	public void insertInBitween() {
+	public void insertInBetewwn() {
 		Node secondnode = link.pushData(70);
 		Node firstnode = link.pushData(56);
 		Node newnode = new Node(30);
@@ -97,9 +96,16 @@ class LinkList {
 		System.out.println("\nAfter:");
 		link.print();
 	}
+
+	public void deleteFirstNode() {
+		addDataStart();
+		link.pop();
+		System.out.println("\nafter deleting first element: ");
+		link.print();
+	}
 }
 
-public class UC4_toInsertElementBetweenTheNodes {
+public class UC5_DeleteFirstElementFromList {
 	public static void main(String[] args) {
 		LinkList obj = new LinkList();
 		System.out.println("*** Welcome To LinkList Program ***");
@@ -108,6 +114,7 @@ public class UC4_toInsertElementBetweenTheNodes {
 		System.out.println("Press 1 to add data at start");
 		System.out.println("Press 2 to add data at end");
 		System.out.println("Press 3 to insert data in between");
+		System.out.println("Press 4 to delete first node");
 		int input = sc.nextInt();
 		switch (input) {
 		case 1:
@@ -117,10 +124,13 @@ public class UC4_toInsertElementBetweenTheNodes {
 			obj.addDataEnd();
 			break;
 		case 3:
-			obj.insertInBitween();
+			obj.insertInBetewwn();
+			break;
+		case 4:
+			obj.deleteFirstNode();
 			break;
 		default:
-			System.out.println("Invalid Choice");	
+			System.out.println("Invalid Choice");
 		}
 	}
 }
